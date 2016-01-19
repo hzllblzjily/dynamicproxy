@@ -1,7 +1,7 @@
 package com.hongbao.dynamicproxy;
 
-import java.lang.reflect.Proxy;
-
+import com.hongbao.dynamicproxy.cglib.TargetCglibWrapper;
+import com.hongbao.dynamicproxy.cglib.TargetObj;
 import com.hongbao.dynamicproxy.invocation.Target;
 import com.hongbao.dynamicproxy.invocation.TargetInterface;
 import com.hongbao.dynamicproxy.invocation.TargetInvocationHandler;
@@ -18,5 +18,10 @@ public class App
     	TargetInterface interface1 = new TargetInvocationHandler(target).getProxy();
     	
         interface1.action();
+        
+        TargetCglibWrapper wrapper = new TargetCglibWrapper();
+        TargetObj obj = (TargetObj) wrapper.getProxy(TargetObj.class);
+        obj.action();
+
     }
 }
